@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Video Library</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f4; color: #333; }
+        h1 { color: #005cbf; }
+        .video-list { list-style: none; padding: 0; }
+        .video-list li {
+            margin: 10px 0;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .video-list a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .video-list a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Available Videos</h1>
+    <ul class="video-list">
+        <li th:each="video : ${videos}">
+            <a th:href="@{'/stream/' + ${video}}" th:text="${video}"></a>
+        </li>
+    </ul>
+</body>
+</html>
