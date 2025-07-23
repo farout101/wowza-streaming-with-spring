@@ -1,5 +1,7 @@
 package personal.yoinami.wowza_spring.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,8 @@ import personal.yoinami.wowza_spring.service.VideoService;
 
 @Controller
 public class HomeController {
+
+    Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     private final VideoService videoService;
 
@@ -25,7 +29,7 @@ public class HomeController {
     @GetMapping("/")
     public String listVideos(Model model) {
         
-        System.out.println("Hello Project");
+        logger.info("Accessing home page to list videos.");
         model.addAttribute("videos", videoService.listVideoFiles());
         return "index";
     }
